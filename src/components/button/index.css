@@ -20,7 +20,7 @@ button:hover {
 }
 
 .button-color-primary:hover {
-  background-color: #39533c;
+  background-color: var(--primary-hover);
 }
 
 .button-color-secondary {

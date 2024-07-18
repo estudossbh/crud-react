@@ -1,7 +1,8 @@
 import React from 'react';
 import Input from '../../components/input';
-import './index.css';
 import Button from '../../components/button';
+import Text from '../../components/text';
+import './index.css';
 
 const Index = () => {
   var [value, setValue] = React.useState('');
@@ -14,13 +15,12 @@ const Index = () => {
     <div className='home-main'>
       <div className='home-header'>
         <Input value={value} onChange={handleChange} />
-        <Button type='button' variant='simple' text='Add' />
+        <Button type='button' text='Add' color='primary' />
       </div>
       <div className='home-content'>
-        <div>a</div>
-        <div>a</div>
-        <div>a</div>
-        <div>a</div>
+        <div> <Text value='Acordar cedo pq sim' /></div>
+        <div> <Text value='Estudar react' /> </div>
+        <div> <Text value='Estudar c#' /> </div>
       </div>
     </div>
   </div>);

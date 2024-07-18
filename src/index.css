@@ -1,3 +1,13 @@
+:root {
+  --primary: dodgerblue;
+  --primary-hover: rgb(29, 116, 203);
+  /* --primary: #596E63; */
+  /* --secondary: #BAD9D9; */
+  --white: aliceblue;
+  /* --green: #4CAF50;
+  --green-hover: #3e8841; */
+}
+
 body {
   margin: 0;
   padding: 0;

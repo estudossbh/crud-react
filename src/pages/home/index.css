@@ -18,3 +18,20 @@
   align-items: center;
   /* justify-content: center; */
 }
+
+.home-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.home-header>div {
+  width: 80%;
+}
+
+.home-header>button {
+  width: 20%;
+}
