@@ -9,7 +9,7 @@ const Index: React.FC<IListItemProps> = ({
     console.log(id + 'teste boladao');
   }
 
-  // Aqui de fato renderiza o botão. #5
+  // Aqui de fato renderiza o botão. #4
   // É neste ponto que de fato se tem as props informadas com seus respectivos valores (#1)
   return (<li className='list-item'>
     <Text value={text} />
