@@ -1,0 +1,11 @@
+.list-item {
+  padding: 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  background-color: var(--secondary);
+  border: 2px solid #babaca;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

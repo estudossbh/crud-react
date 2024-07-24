@@ -1,6 +1,7 @@
 :root {
   --primary: dodgerblue;
   --primary-hover: rgb(29, 116, 203);
+  --secondary: rgb(190, 219, 248);
   /* --primary: #596E63; */
   /* --secondary: #BAD9D9; */
   --white: aliceblue;
