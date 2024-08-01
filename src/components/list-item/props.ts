@@ -1,5 +1,9 @@
 import { PropsWithChildren } from "react";
 
-export interface IListItemProps extends PropsWithChildren {
-  text: string;
+export interface IBaseModel {
+  id?: string;
+}
+
+export interface IListItemProps<T extends IBaseModel> extends PropsWithChildren {
+  model: T;
 }

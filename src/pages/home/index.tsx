@@ -7,31 +7,54 @@ import { Trash } from 'phosphor-react';
 import CheckBox from '../../components/checkbox';
 import ListItem from '../../components/list-item';
 import Text from '../../components/text';
-import { IListItemProps } from '../../components/list-item/props';
+import { IBaseModel, IListItemProps } from '../../components/list-item/props';
+import axios from 'axios';
 
-const ListItem1: React.FC<IListItemProps> = ({
-   ...props
+interface IResponse extends IBaseModel {
+  descricao: string;
+  dataConclusao: string;
+  isConcluido: boolean;
+}
+
+const ListItem1: React.FC<IListItemProps<IResponse>> = ({
+   model, ...props
 }) => {
   const [checked, setChecked] = React.useState(false);
 
   const handleChangeCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('event.target.checked', event.target.checked);
     setChecked(event.target.checked);
   }
 
-  return (<ListItem {...props}>
+  const handleClickDelete = () => {
+    axios
+      .delete('https://localhost:7130/todo/' + model.id)
+      .then(resp => console.log('deu certo'))
+      .catch(error => console.log('deu ruim'));
+  }
+
+  return (<ListItem model={model} {...props}>
     <CheckBox checked={checked} onChange={handleChangeCheck} />
-    <Text value={props.text} />
-    <Button type='button' icon={Trash} color='primary' />
+    <Text value={model.descricao} />
+    <Button type='button' icon={Trash} color='primary' onClick={handleClickDelete} />
   </ListItem>);
 }
 
 const Index = () => {
-  var [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState('');
+  const [response, setResponse] = React.useState<IResponse[]>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   }
+
+  React.useEffect(() => {
+    axios
+      .get('https://localhost:7130/todo')
+      .then(resp => setResponse(resp.data))
+      .catch(error => console.log('deu ruim'));
+  }, []);
+
+  const data = response ? response : [];
 
   return (<div id='home-container'>
     <div className='home-main'>
@@ -40,15 +63,7 @@ const Index = () => {
         <Button type='button' text='Add' color='primary' />
       </div>
       <div className='home-content'>
-        {/* Abaixo, se informa o botao para cada elemento da lista. #2 */}
-        <List data={[
-          { text: 'Acordar cedo1' },
-          { text: 'Acordar cedo2' },
-          { text: 'Acordar cedo3' },
-          { text: 'Acordar cedo4' },
-          { text: 'Acordar cedo5' },
-          { text: 'Acordar cedo6' }
-        ]} listItem={ListItem1} />
+        <List data={data} listItem={ListItem1} />
       </div>
     </div>
   </div>);

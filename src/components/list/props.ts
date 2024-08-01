@@ -1,10 +1,6 @@
-import { IListItemProps } from "../list-item/props";
+import { IBaseModel, IListItemProps } from "../list-item/props";
 
-interface IListItemData {
-  text: string;
-}
-
-export interface IListProps {
-  data: IListItemData[];
-  listItem: React.FC<IListItemProps>;
+export interface IListProps<T extends IBaseModel = any> {
+  data: T[];
+  listItem: React.FC<IListItemProps<any>>;
 }

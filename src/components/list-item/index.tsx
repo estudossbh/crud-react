@@ -1,8 +1,8 @@
 import { IListItemProps } from './props';
 import './index.css';
 
-const Index: React.FC<IListItemProps> = ({
-  text, ...props
+const Index: React.FC<IListItemProps<any>> = ({
+  ...props
 }) => {
   return (<li className='list-item'>
     {props.children}
