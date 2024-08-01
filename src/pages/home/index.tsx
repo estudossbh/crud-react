@@ -4,14 +4,26 @@ import Button from '../../components/button';
 import './index.css';
 import List from '../../components/list';
 import { Trash } from 'phosphor-react';
-import { IButtonProps } from '../../components/button/props';
+import CheckBox from '../../components/checkbox';
+import ListItem from '../../components/list-item';
+import Text from '../../components/text';
+import { IListItemProps } from '../../components/list-item/props';
 
-// Componente Botao Criado
-// Aqui se especifica que ele vai receber estas props. #1
-const ButtonDelete: React.FC<IButtonProps> = ({
-  ...props
+const ListItem1: React.FC<IListItemProps> = ({
+   ...props
 }) => {
-  return (<Button {...props} icon={Trash} color='primary' />);
+  const [checked, setChecked] = React.useState(false);
+
+  const handleChangeCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('event.target.checked', event.target.checked);
+    setChecked(event.target.checked);
+  }
+
+  return (<ListItem {...props}>
+    <CheckBox checked={checked} onChange={handleChangeCheck} />
+    <Text value={props.text} />
+    <Button type='button' icon={Trash} color='primary' />
+  </ListItem>);
 }
 
 const Index = () => {
@@ -30,14 +42,13 @@ const Index = () => {
       <div className='home-content'>
         {/* Abaixo, se informa o botao para cada elemento da lista. #2 */}
         <List data={[
-          { text: 'Acordar cedo1', actionButton: ButtonDelete },
-          { text: 'Acordar cedo2', actionButton: ButtonDelete },
-          { text: 'Acordar cedo3', actionButton: ButtonDelete },
-          { text: 'Acordar cedo4', actionButton: ButtonDelete },
-          { text: 'Acordar cedo5', actionButton: ButtonDelete },
-          { text: 'Acordar cedo6', actionButton: ButtonDelete },
-          { text: 'Acordar cedo7', actionButton: ButtonDelete }
-        ]} />
+          { text: 'Acordar cedo1' },
+          { text: 'Acordar cedo2' },
+          { text: 'Acordar cedo3' },
+          { text: 'Acordar cedo4' },
+          { text: 'Acordar cedo5' },
+          { text: 'Acordar cedo6' }
+        ]} listItem={ListItem1} />
       </div>
     </div>
   </div>);

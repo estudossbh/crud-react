@@ -1,6 +1,5 @@
-import { IButtonProps } from "../button/props";
+import { PropsWithChildren } from "react";
 
-export interface IListItemProps {
+export interface IListItemProps extends PropsWithChildren {
   text: string;
-  actionButton?: React.FC<IButtonProps>;
 }
