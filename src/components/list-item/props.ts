@@ -6,4 +6,5 @@ export interface IBaseModel {
 
 export interface IListItemProps<T extends IBaseModel> extends PropsWithChildren {
   model: T;
+  onReload: () => void;
 }

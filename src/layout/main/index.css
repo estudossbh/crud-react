@@ -9,6 +9,7 @@
 
 .home-main {
   min-height: 70%;
+  height: 70%;
   max-height: 90vh;
   width: 50%;
   background-color: aliceblue;
@@ -20,30 +21,4 @@
   overflow-y: auto;
   gap: 8px;
   /* justify-content: center; */
-}
-
-.home-header {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-}
-
-.home-search {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-}
-
-.home-header>div {
-  width: 80%;
-}
-
-.home-content {
-  width: 100%;
 }
