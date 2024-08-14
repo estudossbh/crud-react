@@ -1,5 +1,4 @@
 import React from 'react';
-import Input from '../../components/input';
 import Button from '../../components/button';
 import './index.css';
 import ListView from '../../components/list-view';
@@ -23,7 +22,7 @@ const ListItem1: React.FC<IListItemProps<IResponse>> = ({
 
   const handleClickDelete = () => {
     axios
-      .delete('https://localhost:7130/todo/' + model.id)
+      .delete('https://localhost:7130/todo/delete/' + model.id)
       .then(resp => {
         console.log('deu certo');
         onReload();
@@ -40,11 +39,6 @@ const ListItem1: React.FC<IListItemProps<IResponse>> = ({
 
 const Index = () => {
   const navigate = useNavigate();
-  const [value, setValue] = React.useState('');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  }
 
   const handleClick = () => {
     navigate('/create');
@@ -53,10 +47,6 @@ const Index = () => {
   return (<>
     <div className='home-header'>
       <Button type='button' text='Adicionar' color='primary' onClick={handleClick} />
-    </div>
-    <div className='home-search'>
-      <Input value={value} onChange={handleChange} />
-      <Button type='button' text='Buscar' color='primary' />
     </div>
     <div className='home-content'>
       <ListView url='https://localhost:7130/todo' listItem={ListItem1} />
